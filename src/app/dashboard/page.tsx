@@ -1,5 +1,5 @@
-import { signOUT, sendToSignIn } from "@/src/actions/actions"
-import { auth } from "@/auth"
+import { signOUT, sendToSignIn } from "@/src/actions/actions";
+import { auth } from "@/auth";
 
 export default async function DashBoard() {
 
@@ -12,9 +12,9 @@ export default async function DashBoard() {
           </form>
 
         </>
-        )
+        );
 
-    }else{}
+    }
 
     return (
         <div>
@@ -23,5 +23,5 @@ export default async function DashBoard() {
                 <button type="submit">Sign Out</button>
             </form>
         </div>
-    )
+    );
 }
