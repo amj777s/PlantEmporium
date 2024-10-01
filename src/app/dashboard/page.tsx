@@ -10,7 +10,6 @@ export default async function DashBoard() {
           <form action={sendToSignIn}>
            <button type="submit">Go to sign In</button>
           </form>
-
         </>
         );
 
