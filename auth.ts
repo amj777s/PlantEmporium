@@ -19,13 +19,6 @@ import { PrismaAdapter } from "@auth/prisma-adapter";
 // })
  
 export const { handlers, signIn, signOut, auth } = NextAuth({
-  debug: true,
   adapter: PrismaAdapter(prisma),
-  providers: [Google,GitHub],
-  callbacks: {
-    session({ session, user }) {
-      session.user.id = user.id
-      return session
-    }
-  }
+  providers: [Google,GitHub]
 })
