@@ -1,0 +1,105 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("POSTGRES_URL")
+}
+
+model User {
+  id            String          @id @default(cuid())
+  name          String?
+  email         String          @unique
+  emailVerified DateTime?
+  image         String?
+  accounts      Account[]
+  sessions      Session[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+ 
+model Account {
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+ 
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+ 
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+ 
+  @@id([provider, providerAccountId])
+}
+ 
+model Session {
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+ 
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+ 
+model VerificationToken {
+  identifier String
+  token      String
+  expires    DateTime
+ 
+  @@id([identifier, token])
+}
+
+
+// For Other Projects
+
+model game {
+  id          Int       @id @default(autoincrement())
+  show_number Int?
+  air_date    DateTime? @db.Date
+  round       String
+  category    String
+  score       Int
+  question    String    @unique
+  answer      String
+}
+
+model highscores {
+  id             Int            @id @default(autoincrement())
+  score          Int
+  username       String         @db.VarChar(30)
+  created        DateTime       @db.Date
+  jeopardy_users jeopardy_users @relation(fields: [username], references: [username], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model jeopardy_users {
+  username   String       @id(map: "users_pkey") @db.VarChar(30)
+  email      String       @db.VarChar(30)
+  hash       String
+  created    DateTime     @db.Date
+  highscores highscores[]
+}
+
+model starlight_highscores {
+  id              Int             @id @default(autoincrement())
+  username        String          @db.VarChar(30)
+  score           Int
+  created         DateTime        @db.Date
+  starlight_users starlight_users @relation(fields: [username], references: [username], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model starlight_users {
+  username             String                 @id @db.VarChar(30)
+  email                String                 @db.VarChar(30)
+  hash                 String
+  created              DateTime               @db.Date
+  starlight_highscores starlight_highscores[]
+}
