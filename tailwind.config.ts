@@ -11,6 +11,8 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        cardWhite: "#f0f0f0",
+        mintGreen: "#98FB98",
       },
     },
   },

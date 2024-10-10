@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { EB_Garamond } from "next/font/google";
+import NavBar from "../components/NavBar";
+
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -12,6 +15,12 @@ const geistMono = localFont({
   variable: "--font-geist-mono",
   weight: "100 900",
 });
+
+const garmond = EB_Garamond({
+  subsets: ['latin'],
+  display: "swap",
+  fallback: ['system-ui', 'arial']
+})
 
 export const metadata: Metadata = {
   title: "Plant Emporium",
@@ -25,9 +34,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${garmond}  antialiased`} >
+      <NavBar />
         {children}
       </body>
     </html>
