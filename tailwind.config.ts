@@ -14,6 +14,19 @@ const config: Config = {
         cardWhite: "#f0f0f0",
         mintGreen: "#98FB98",
       },
+      animation: {
+        bright: "bright 1.5s ease-out infinite"
+      },
+      keyframes: {
+        bright: {
+          "0%, 100%": { 
+            filter: 'brightness(1)'
+          },
+          "50%": {
+            filter: 'brightness(1.5)'
+          }
+        } 
+      }
     },
   },
   plugins: [],

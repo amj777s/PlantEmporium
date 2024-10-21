@@ -18,7 +18,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  /* outline: 1px solid red; */
+  outline: 1px solid red;
 }
 
 body {
@@ -30,6 +30,10 @@ body {
   background-image: radial-gradient(#00ff4d 0.6000000000000001px, transparent 0.6000000000000001px), radial-gradient(#00ff4d 0.6000000000000001px, #ffffff 0.6000000000000001px);
   background-size: 24px 24px;
   background-position: 0 0, 12px 12px;
+}
+
+summary:hover {
+  cursor: pointer;
 }
 
 @layer components {

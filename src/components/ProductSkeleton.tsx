@@ -8,5 +8,5 @@ export default function ProductSkeleton(){
                 <p>Price</p>
 
             </article>
-    )
+    );
 }

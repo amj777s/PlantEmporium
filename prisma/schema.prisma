@@ -72,6 +72,8 @@ model PlantProduct {
   reviews     PlantReview[]
   imageUrl    String
   cartItem    CartItem[]
+  createdAt DateTime               @default(now())
+  updatedAt DateTime?               @updatedAt
 
   @@map("plant_products")
 }
@@ -95,6 +97,9 @@ model PlantShippingAddress {
   state   String
   userId  Int
   user    PlantUser @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime     @default(now())
+  updatedAt DateTime?    @updatedAt
+
 
   @@map("plant_shipping_addresses")
 }

@@ -32,7 +32,7 @@ export default  function ProductCard({
             </article>
        
         
-    )
+    );
 }   
 
 //TODO: figure out why nextjs is loading images not in viewport
