@@ -29,14 +29,14 @@ export default function FilterList({
 
         startTransition(()=> {
             // Create new params since we dont care about page params when filter is applied. Want to show all related products
-            let params = new URLSearchParams();
+            const params = new URLSearchParams();
             
             for(const [name,value] of formData.entries()){
                 params.append(name, String(value));
             }
             
 
-            const url:string = `${pathName}?${params.toString()}`
+            const url:string = `${pathName}?${params.toString()}`;
 
             // Only want to replace when not on main products page
             if(prevSearchParams.get('page') === null){
@@ -46,34 +46,34 @@ export default function FilterList({
             }
 
 
-        })
-    }
+        });
+    };
 
     return (
-        <>
+        <div className=" w-full sm:w-1/4">
             {/* Input for controlling filter menu visibility */}
             <input type="checkbox" id="filterList-active" className="hidden peer" />
 
             {/* Filter button */}
-            <div className="flex flex-row items-center w-full">
+            <div className="flex flex-row items-center w-full sm:mb-3">
                 <label htmlFor="filterList-active">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 inline-block align-middle" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M440-160q-17 0-28.5-11.5T400-200v-240L168-736q-15-20-4.5-42t36.5-22h560q26 0 36.5 22t-4.5 42L560-440v240q0 17-11.5 28.5T520-160h-80Zm40-308 198-252H282l198 252Zm0 0Z" /></svg>
                     <h3 className=" font-semibold inline-block align-middle  ">Filter</h3>
                 </label>
 
                 <aside className="text-sm font-semibold text-zinc-400 ml-auto">{`${productTotal} results`}</aside>
-            </div>
+            </div>  
 
             {/* Filter Menu */}
-            <form action={handleFilter} className=" flex flex-col p-3 fixed w-4/5 h-screen  dotted-background top-0 -right-full peer-checked:right-0 z-10 transition-[right] duration-500">
+            <form action={handleFilter} className=" flex flex-col p-3 sm:p-0 fixed sm:relative w-4/5 sm:w-full h-screen sm:h-auto  dotted-background top-0 -right-full sm:right-0 peer-checked:right-0 z-10 transition-[right] duration-500">
 
                 {/* make tabable */}
                 <label htmlFor="filterList-active" className="">
-                    <svg className="h-9 w-9 fill-mintGreen" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" /></svg>
+                    <svg className="sm:hidden h-9 w-9 fill-mintGreen" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" /></svg>
                 </label>
 
 
-                <p className="text-center text-gray-400">Filter and Sort</p>
+                <p className=" sm:hidden text-center text-gray-400">Filter and Sort</p>
 
                 <details name="filter" className="">
                     <summary className=" py-2 bg-mintGreen hover:brightness-75 transition-[filter] duration-500">Lighting Requirements</summary>
@@ -127,8 +127,8 @@ export default function FilterList({
 
                 {/* Sort Selection */}
                 <div className="flex flex-row bg-mintGreen py-2">
-                    <label htmlFor="sortBy" className="inline-block ">Sort By:</label>
-                    <select name="sortBy" id="sortBy" className="inline-block ml-auto">
+                    <label htmlFor="sortBy" className="inline-block sm:text-sm ">Sort By:</label>
+                    <select name="sortBy" id="sortBy" className="inline-block ml-auto bg-transparent">
                         <option value="featured">Featured</option>
                         <option value="priceLow">Price: lowest first</option>
                         <option value="priceHigh">Price: highest first</option>
@@ -137,13 +137,10 @@ export default function FilterList({
                     </select>
                 </div>
 
-                <button type="submit" disabled={isPending} className="p-2 mt-auto self-center font-bold rounded-full border-mintGreen  disabled:brightness-75 border-4   hover:bg-mintGreen    ">Apply Changes</button>
-
-
-
+                <button type="submit" disabled={isPending} className="p-2 mt-auto sm:mt-3 self-center font-bold rounded-full border-mintGreen  disabled:brightness-75 border-4   hover:bg-mintGreen duration-500    ">Apply Changes</button>
 
             </form>
-        </>
+        </div>
 
-    )
+    );
 }

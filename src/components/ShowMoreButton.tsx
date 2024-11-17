@@ -41,8 +41,9 @@ export default function ShowMoreButton() {
 
 
     return (
+            <div className="w-full">
+                <button disabled={isPending} className=" relative p-2 font-bold rounded-full left-1/2 -translate-x-1/2 border-mintGreen  disabled:bg-mintGreen border-4   hover:bg-mintGreen transition-colors duration-500  disabled:animate-bright" onClick={handleLoadMore}>{buttonMessage}</button>
+            </div>
 
-             <button disabled={isPending} className="  p-2 font-bold rounded-full border-mintGreen  disabled:bg-mintGreen border-4   hover:bg-mintGreen transition-colors duration-500  disabled:animate-bright   " onClick={handleLoadMore}>{buttonMessage}</button>
-      
-    )
+    );
 };

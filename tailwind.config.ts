@@ -14,6 +14,10 @@ const config: Config = {
         cardWhite: "#f0f0f0",
         mintGreen: "#98FB98",
       },
+      screens: {
+        "2xl": "2500px",
+        "3xl": "4000px"
+      },
       animation: {
         bright: "bright 1.5s ease-out infinite"
       },

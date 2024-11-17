@@ -35,7 +35,7 @@ export default function NavBar() {
                 <hr className=" h-1 sm:hidden  bg-gray-200 border-0 dark:bg-gray-700"></hr>
                 <Link href="/about" className=" transition-colors duration-500  text-mintGreen text-large font-bold hover:text-green-400">About</Link>
                 <hr className="h-1 sm:hidden  bg-gray-200 border-0 dark:bg-gray-700"></hr>
-                <Link href="products" className=" transition-colors duration-500  text-mintGreen text-large font-bold hover:text-green-400">Products</Link>
+                <Link href="/products" className=" transition-colors duration-500  text-mintGreen text-large font-bold hover:text-green-400">Products</Link>
                 <hr className="h-1 sm:hidden bg-gray-200 border-0 dark:bg-gray-700"></hr>
                 <Link href="login" className=" transition-colors duration-500  text-mintGreen text-large font-bold hover:text-green-400 ">Login</Link>
                 <hr className="h-1 sm:hidden bg-gray-200 border-0 dark:bg-gray-700"></hr>
