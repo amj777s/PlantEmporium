@@ -136,10 +136,10 @@ export const getRelatedProducts = async (productTags: string[]) => {
                 hasSome: productTags
             }
         },   
-    })
+    });
 
-    return relatedProducts
-}
+    return relatedProducts;
+};
 
 
 //--------REVIEW FUNCTIONS-------------------
@@ -167,7 +167,7 @@ export const GetAverageRating = cache(async (productId: number)=> {
         return 0;
     }
    
-})
+});
 
 
 /**
@@ -221,7 +221,7 @@ export const verifyPurchase = cache(async (productId: number, userId: string): P
         return false;
     }
 
-})
+});
 
 // returns true if user has a review for supplied product number
 export const checkForReview = cache(async (productId: number, userId: string) => {
@@ -299,7 +299,7 @@ export const isItemInCart = async (productId: number, userId: string) => {
     
   
 
-}
+};
 
 
 /**
@@ -382,7 +382,7 @@ export const addCartItem = async (productId: number, userId: string, quantity: n
     }
 
 
-}
+};
 
 
 

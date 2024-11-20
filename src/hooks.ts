@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Dispatch } from "react";
+
 export const useWarningStatus = () => {
     const [isVisible, toggleIsVisible] = useState<boolean>(false);
 
@@ -7,13 +7,13 @@ export const useWarningStatus = () => {
         
         if(isVisible){
             const warningId = setTimeout(()=> {
-                toggleIsVisible(!isVisible)
-            },3000)
+                toggleIsVisible(!isVisible);
+            },3000);
 
-            return clearTimeout(warningId)
+            return clearTimeout(warningId);
         }
-    }, [isVisible])
+    }, [isVisible]);
 
 
-    return [isVisible, toggleIsVisible]
-}
+    return [isVisible, toggleIsVisible];
+};

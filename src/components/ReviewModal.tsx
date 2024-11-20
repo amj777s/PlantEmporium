@@ -18,7 +18,7 @@ export default  function ReviewModal({
 }){
     
  
-    const dialogRef = useRef<HTMLDialogElement>(null)
+    const dialogRef = useRef<HTMLDialogElement>(null);
     const titleRef = useRef<HTMLInputElement>(null);
     const reviewRef = useRef<HTMLTextAreaElement>(null);
     const [reviewLength, setReviewLength] = useState<number>(0);
@@ -29,7 +29,7 @@ export default  function ReviewModal({
         // handles opening and closing of reviewModal
         if(isOpen){
             
-            dialogRef.current?.showModal()
+            dialogRef.current?.showModal();
         
         }else{
             
@@ -42,7 +42,7 @@ export default  function ReviewModal({
             closeModal(); // sets isOpen to false
             
         }
-    },[isOpen,formState])
+    },[isOpen,formState, closeModal]);
 
 
     /**
@@ -52,7 +52,7 @@ export default  function ReviewModal({
         e.preventDefault();
         setReviewLength(e.target.textLength);
         
-    }
+    };
 
     /**
     *   sets Titlelength react state for showing character count of review
@@ -60,7 +60,7 @@ export default  function ReviewModal({
     const CountTitleCharacters = (e: React.ChangeEvent<HTMLInputElement>) => {
         e.preventDefault();
         setTitleLength(e.target.value.length);
-    }
+    };
 
     const buttonMessage = isPending? <><LoadSpin className="animate-spin size-6 mr-3 fill-black inline-block"/>Submitting...</>: "Submit";
 
@@ -82,7 +82,7 @@ export default  function ReviewModal({
             </form>
         </dialog>
        
-    )
+    );
 }
 
 

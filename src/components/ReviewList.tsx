@@ -7,7 +7,7 @@ import dynamic from "next/dynamic";
 import NoReviewsIcon from '@/public/icons/reviewEmpty.svg';
 import StarEmpty from '@/public/icons/star.svg';
 import StarFilled from '@/public/icons/starFilled.svg';
-import StarHalf from '@/public/icons/starHalf.svg'
+import StarHalf from '@/public/icons/starHalf.svg';
 
 
 
@@ -30,7 +30,7 @@ export default function ReviewList({
     const reviews = use(reviewsPromise);
     const averageRating = use(ratingPromise);
     const [isReviewModalVisible, toggleReviewModal] = useState<boolean>(false);
-    let stars = [];
+    const stars = [];
 
 
 
@@ -59,7 +59,7 @@ export default function ReviewList({
             toggleReviewModal(!isReviewModalVisible);
         }
 
-    }
+    };
 
     let numWholeStars = Math.floor(averageRating);
     let numEmptyStars;

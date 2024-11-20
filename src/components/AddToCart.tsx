@@ -23,7 +23,7 @@ export default function AddToCart({
         if(!cartState.error && cartState.message === "Added To Cart!"){
             toast.success("Added To Cart!",{
                 autoClose: 3000
-            })
+            });
         }
     },[cartState]);
     

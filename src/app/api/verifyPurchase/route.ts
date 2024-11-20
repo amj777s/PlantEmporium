@@ -14,10 +14,10 @@ export async function POST(request: Request) {
             reason: "validation"
         }, {
             status: 403
-        })
+        });
     }
 
-    const isPurchaseVerified = await verifyPurchase(productId, session.user!.id!) //null override since a session will always have a user attached to it
+    const isPurchaseVerified = await verifyPurchase(productId, session.user!.id!); //null override since a session will always have a user attached to it
 
     if (isPurchaseVerified) {
         return Response.json({
@@ -25,14 +25,14 @@ export async function POST(request: Request) {
             reason: "verified"
         }, {
             status: 200
-        })
+        });
     } else {
         return Response.json({
             message: "Must have purchased Item",
             reason: "purchase"
         }, {
             status: 403
-        })
+        });
     }
     
     

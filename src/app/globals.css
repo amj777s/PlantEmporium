@@ -24,7 +24,7 @@
   padding: 0;
   box-sizing: border-box;
   /* outline: 1px solid red; */
-  sroll-behavior: smooth;
+
 }
 
 body {
@@ -36,6 +36,7 @@ body {
   background-image: radial-gradient(#00ff4d 0.6000000000000001px, transparent 0.6000000000000001px), radial-gradient(#00ff4d 0.6000000000000001px, #ffffff 0.6000000000000001px);
   background-size: 24px 24px;
   background-position: 0 0, 12px 12px;
+  sroll-behavior: smooth;
 }
 
 summary:hover {
@@ -112,5 +113,10 @@ summary:hover {
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  /* 64px is the height of the navbar */
+  .h-screenNoNav {
+    height: calc(100dvh - 64px) ;
   }
 }

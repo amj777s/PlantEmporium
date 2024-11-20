@@ -21,5 +21,5 @@ export default function ReviewsSkeleton() {
                 </div>
             </div>
         </div>
-    )
+    );
 }

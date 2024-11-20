@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { PlantProduct } from "@prisma/client";
 import { use } from "react";
@@ -11,15 +11,15 @@ export default function RelatedProductsList({
 }) {
 
     const relatedProducts = use(relatedProductsPromise);
-    let mobileFlexPositioning;
+    
 
 
     // Dont show related products section if relatedproducts array is empty
     if(relatedProducts.length === 0){
-        return <></>
+        return <></>;
     }
 
-    mobileFlexPositioning = relatedProducts.length === 1 ? 'justify-center' : " "; 
+   const  mobileFlexPositioning = relatedProducts.length === 1 ? 'justify-center' : " "; 
 
 
 
@@ -31,14 +31,14 @@ export default function RelatedProductsList({
                 {relatedProducts.map(product => {
                     return (
                         <ProductCard key={`related ${product.imageUrl}`} product={product} />
-                    )
+                    );
                 })}
             </div>
             
            
 
         </section>
-    )
+    );
 }
 
 //TODO loading skeleton, css scroll animatio for carasoul, fix margins on scroll

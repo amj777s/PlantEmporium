@@ -24,7 +24,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${garmond}  antialiased`} >
+      <body className={` ${garmond}  antialiased`} >
       <NavBar />
         {children}
       <ToastContainer autoClose={5000} />

@@ -2,16 +2,18 @@
 
 //TODO: provide method for add to cart that adds item to ItemCart table, provided the user exists, otherwise add to guest shopping cart in localStorage
 
-import { auth, signIn } from "@/auth";
-import { signOut } from "@/auth";
+import { auth, signIn, signOut } from "@/auth";
 import { redirect } from "next/navigation";
 import { FormMessage, ReviewFormData } from "@/src/types";
 import { ReviewSchema, ProductQuantitySchema } from "../zodSchemas";
 import { ZodError } from "zod";
-import { addCartItem, checkForReview, createReview, isItemInCart, updateCartItem, verifyPurchase } from "../utils";
+import {addCartItem,updateCartItem,checkForReview, createReview, isItemInCart, verifyPurchase } from "../utils";
 
-export const signIN = async (provider: string) => {
-    await signIn(provider, { redirectTo: "/dashboard" });
+
+//
+export const signIN = async (provider: string, callbackUrl: string | undefined) => {
+    
+    await signIn(provider,{redirectTo: callbackUrl});
 };
 
 export const signOUT = async () => {
@@ -35,7 +37,7 @@ export const sendToSignIn = async () => {
 export const AddInCart = async (productId: number, itemStock: number, currentState: FormMessage, formData: FormData) => {
 
 
-    const QuantitySchema = ProductQuantitySchema(itemStock)
+    const QuantitySchema = ProductQuantitySchema(itemStock);
 
     const quantity: number = Number(formData.get('amount'));
     let parsedQuantity: number;
@@ -50,26 +52,26 @@ export const AddInCart = async (productId: number, itemStock: number, currentSta
                 message: error.issues[0].message
             };
         } else {
-            console.error("Unexpected error ", error)
+            console.error("Unexpected error ", error);
             return {
                 error: true,
                 message: "Something went wrong. Try Again."
-            }
+            };
         }
     };
 
     const session = await auth();
 
-    if (session) {
-        const userId = session.user?.id! //null override used since a session will always have a user attached
+    if (session?.user?.id) {
+        const userId = session.user.id; //null override used since a session will always have a user attached
         const hasItemInCart: boolean = await isItemInCart(productId, userId);
 
         if (hasItemInCart) {
 
-            const updatedCartItem = await updateCartItem(productId, userId, parsedQuantity); // possibly used for detailed toast
+            await updateCartItem(productId, userId, parsedQuantity); // possibly used for detailed toast
 
         } else {
-            const addedCartItem = await addCartItem(productId, userId, parsedQuantity); // possibly used for detailed toast
+            await addCartItem(productId, userId, parsedQuantity); // possibly used for detailed toast
         }
 
         return {
@@ -85,7 +87,7 @@ export const AddInCart = async (productId: number, itemStock: number, currentSta
     return {
         error: true,
         message: "Must be signed in to add to cart!"
-    }
+    };
 
 };
 
@@ -126,7 +128,7 @@ export const addReview = async (productId: number, currentState: ReviewFormData,
                 }
             } as ReviewFormData;
         } else {
-            console.error("Unexpected error ", error)
+            console.error("Unexpected error ", error);
             return {
                 error: true,
                 message: "Something went wrong. Try Again.",
@@ -158,10 +160,10 @@ export const addReview = async (productId: number, currentState: ReviewFormData,
         
     }
 
-    const userId = session.user?.id! //null override used since a session will always have a user attached
+    const userId = session.user?.id!; //null override used since a session will always have a user attached
 
     // Returns the first purchase order that contains an OrderItem with the correct productId
-    const isPurchasVerified = await verifyPurchase(productId, userId)
+    const isPurchasVerified = await verifyPurchase(productId, userId);
 
     if (!isPurchasVerified) {
         return {
@@ -206,7 +208,7 @@ export const addReview = async (productId: number, currentState: ReviewFormData,
         }
     } as ReviewFormData;
 
-}
+};
 
 
 
