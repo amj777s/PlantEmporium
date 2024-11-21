@@ -5,6 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { EB_Garamond } from "next/font/google";
 import NavBar from "../components/NavBar";
 import { ToastContainer } from "react-toastify";
+import Footer from "../components/Footer";
 
 const garmond = EB_Garamond({
   subsets: ['latin'],
@@ -27,6 +28,7 @@ export default function RootLayout({
       <body className={` ${garmond}  antialiased`} >
       <NavBar />
         {children}
+      <Footer />
       <ToastContainer autoClose={5000} />
       </body>
     </html>
