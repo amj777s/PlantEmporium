@@ -4,10 +4,10 @@ import Link from "next/link";
 
 export default function Footer(){
     return (
-        <footer className="flex flex-col sm:flex-row w-full flex-wrap p-[--mobile-padding] sm:px-[--small-padding] 2xl:px-[--2xl-padding] mt-10 gap-3 sm:gap-0">
+        <footer className="flex flex-col  sm:flex-row w-full max-w-[1000px] flex-wrap p-[--mobile-padding] sm:px-[--small-padding] 2xl:px-[--2xl-padding] mx-auto mt-10 gap-3  text-sm">
             
             {/* General message & social media */}
-            <div className=" w-full sm:w-1/2 flex flex-col  items-center">  
+            <div className="  flex flex-col  items-center  basis-full sm:basis-1/2 flex-grow flex-shrink" >  
                 <div className="flex flex-row items-center">
                 <Plantlogo className='size-10 fill-mintGreen mr-2' />
                 <p className="font-bold text-lg">Plant Emporium</p>
@@ -20,7 +20,7 @@ export default function Footer(){
             </div>
 
             {/* additonal info */}
-            <div className="w-full sm:w-1/4 flex flex-col items-center gap-1">
+            <div className=" flex flex-col items-center gap-1 basis-full sm:basis-auto flex-grow-0 flex-shrink-0">
                 <p className="font-semibold mb-2">MORE FROM PE</p>
                 <Link href="/about" className=" hover:font-bold transition-all duration-300">About Us</Link>
                 <Link href="/faq" className=" hover:font-bold transition-all duration-300">General FAQ</Link>
@@ -28,7 +28,7 @@ export default function Footer(){
             </div>
 
             {/* Contact infos */}
-            <div className=" w-full sm:w-1/4 flex flex-col items-center gap-1">
+            <div className="flex flex-col items-center gap-1 basis-full sm:basis-auto flex-grow-0 flex-shrink-0">
                 <p className="font-semibold mb-2">CONTACT</p>
                 <Link href="/contact" className=" hover:font-bold transition-all duration-300">Contact Us</Link>
             </div>
@@ -38,3 +38,4 @@ export default function Footer(){
         </footer>
     )
 }
+

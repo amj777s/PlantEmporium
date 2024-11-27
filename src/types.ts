@@ -39,3 +39,7 @@ export type  PlantReviewWithUser = PlantReview & {
     } | null
 };
 
+export type FAQ = {
+    [question: string]: string
+};
+
